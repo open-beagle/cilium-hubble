@@ -1,0 +1,15 @@
+ARG BASE
+
+FROM $BASE
+
+ARG AUTHOR
+ARG VERSION
+
+LABEL maintainer=$AUTHOR version=$VERSION
+
+ARG TARGETOS
+ARG TARGETARCH
+
+RUN apk add --no-cache bash curl jq
+
+COPY ./dist/$TARGETOS-$TARGETARCH/ /usr/bin/
